@@ -1,0 +1,139 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.amazon-header {
+    background-color: rgb(19, 25, 33);
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 60px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.amazon-header-left-section {
+    display: flex;
+    align-items: center;
+    width: 180px;
+}
+
+.amazon-logo {
+    width: 100px;
+}
+
+.amazon-mobile-logo {
+    display: none;
+}
+
+@media(max-width:575px) {
+    .amazon-mobile-logo {
+        display: block;
+        width: 30px;
+    }
+
+    .amazon-logo {
+        display: none;
+    }
+}
+
+.header-link {
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.header-link:hover {
+    border: 2px solid white;
+}
+
+.amazon-header-middle-section {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    max-width: 850px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search-bar {
+    flex: 1;
+    height: 38px;
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.search-button {
+    background-color: rgb(254, 189, 105);
+    border: none;
+    width: 45px;
+    height: 40px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    flex-shrink: 0;
+}
+
+.search-icon {
+    height: 24px;
+    margin-top: 4px;
+}
+
+.amazon-header-right-section {
+    width: 180px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: end;
+  }
+  
+  .orders-link {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .returns-text {
+    display: block;
+    font-size: 13px;
+  }
+  
+  .orders-text {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  
+  .cart-link {
+    color: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .cart-icon {
+    width: 50px;
+  }
+  
+  .cart-text {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+.cart-quantity {
+    color: rgb(240, 136, 4);
+    position: absolute;
+    top: 8px;
+    right: 55px;
+    font-weight: bold;
+}
