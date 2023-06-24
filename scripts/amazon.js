@@ -1,6 +1,6 @@
 let productsHTML = ''
 products.forEach((product) => {
-            productsHTML+= `
+    productsHTML += `
             <div class="product-container">
             <div class="product-image-container">
             <img class="product-image" src="${product.image}">
@@ -32,16 +32,59 @@ products.forEach((product) => {
 
             <div class="product-spacer"></div>
 
-            <div class="added-to-cart">
-                <img src="iicon-images/checkmark.png">
+            <div class="added-to-cart added-to-cart-js-${product.id}">
+                <img src="icon-images/checkmark.png">
                 Added
             </div>
 
-            <button class="add-to-cart-button button-primary">
+            <button class="add-to-cart-button button-primary add-to-cart-js"
+             data-product-Id = "${product.id}"
+             >
                 Add to Cart
             </button>
         </div>
         `
 })
-console.log(productsHTML)
-document.querySelector('.products-grid-js').innerHTML = productsHTML
+document.querySelector(".products-grid-js").innerHTML = productsHTML
+
+document.querySelectorAll(".add-to-cart-js").forEach((button) => {
+    button.addEventListener("click", () => {
+
+        let productId = button.dataset.productId
+        // console.log(productId)
+
+        let matchedProduct;
+
+        cart.forEach((item) => {
+            if (productId === item.productId) {
+                matchedProduct = item
+            }
+        })
+        if (matchedProduct) {
+            matchedProduct.quantity += 1
+        } else {
+            cart.push({
+                productId: productId,
+                quantity: 1
+            })
+        }
+        let cartQuantity = 0
+        cart.forEach((item) => {
+            if (typeof item.quantity === "number" && !isNaN(item.quantity)) {
+                cartQuantity += item.quantity
+            }
+        })
+        document.querySelector(".js-cart-quantity").innerHTML = cartQuantity
+        console.log(cart)
+
+        let addedMessage = document.querySelector(`.added-to-cart-js-${productId}`)
+        addedMessage.classList.add('added-to-cart-visible')
+
+        setTimeout(() => {
+            addedMessage.classList.remove('added-to-cart-visible')
+        }, 2000);
+
+    })
+})
+
+
