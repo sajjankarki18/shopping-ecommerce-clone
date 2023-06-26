@@ -1,3 +1,6 @@
+let productsGridEL = document.querySelectorAll(".products-grid-js")[0]
+let cartQuantityEL = document.querySelector(".js-cart-quantity")
+
 let productsHTML = ''
 products.forEach((product) => {
     productsHTML += `
@@ -45,7 +48,7 @@ products.forEach((product) => {
         </div>
         `
 })
-document.querySelector(".products-grid-js").innerHTML = productsHTML
+productsGridEL.innerHTML = productsHTML
 
 document.querySelectorAll(".add-to-cart-js").forEach((button) => {
     button.addEventListener("click", () => {
@@ -74,8 +77,7 @@ document.querySelectorAll(".add-to-cart-js").forEach((button) => {
                 cartQuantity += item.quantity
             }
         })
-        document.querySelector(".js-cart-quantity").innerHTML = cartQuantity
-        console.log(cart)
+        cartQuantityEL.innerHTML = cartQuantity
 
         let addedMessage = document.querySelector(`.added-to-cart-js-${productId}`)
         addedMessage.classList.add('added-to-cart-visible')
