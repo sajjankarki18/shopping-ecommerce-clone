@@ -1,6 +1,9 @@
 let productsGridEL = document.querySelector('.products-grid-js')
 let cartQuantityEL = document.querySelector('.cart-quantity-js')
 
+let searchBarEL = document.querySelector('.search-bar-js')
+let searchButtonEL = document.querySelector('.search-button-js')
+
 let productsHTML = ''
 products.forEach((product) => {
     productsHTML += `
@@ -8,7 +11,7 @@ products.forEach((product) => {
             <div class="product-image-container">
             <img class="product-image" src="${product.image}">
             </div>
-            <div class="product-name">
+            <div class="product-name product-name-js">
                 ${product.name}
             </div>
             <div class="product-rating-container">
@@ -50,6 +53,7 @@ products.forEach((product) => {
 })
 productsGridEL.innerHTML = productsHTML
 
+//interacting with the products
 document.querySelectorAll('.add-to-cart-js').forEach((button) => {
     button.addEventListener("click", () => {
         //retrieving the product's data
@@ -90,6 +94,24 @@ document.querySelectorAll('.add-to-cart-js').forEach((button) => {
         }, 2000);
     })
 })
+
+//searching the product in the search-bar
+const getSearchedProducts = (searchedProduct) => {
+    products.forEach((product, index) => {
+        let productContainer = productsGridEL.children[index]
+
+        if(product.name.toLowerCase().includes(searchedProduct.toLowerCase())){
+            productContainer.style.display = 'block'
+        }else{
+            productContainer.style.display = 'none'
+        }
+    })
+}
+
+searchButtonEL.addEventListener('click', () => {
+   getSearchedProducts(searchBarEL.value)
+})
+
 
 
 
